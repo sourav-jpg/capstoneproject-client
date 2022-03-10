@@ -11,9 +11,9 @@
   font-weight: bold;
   
 }
-.content{
+/* .content{
   margin-right: 400px !important;
-}
+} */
 /* 
 home Page */
 
@@ -54,7 +54,6 @@ home Page */
   font-weight: 500;
 }
 
-/* @extend display-flex; */
 
 .signup-content,
 .signin-content {
@@ -115,7 +114,7 @@ body {
 }
 
 .container1 {
-  width: 1000px;
+  width: 800px;
   background: #fff;
   margin: 0 auto;
   border-radius: 20px;
@@ -136,6 +135,7 @@ body {
 
 .signup-content {
   padding: 75px 0;
+  
 }
 
 .signup-form,
@@ -144,6 +144,7 @@ body {
 .signin-image {
   width: 50%;
   overflow: hidden;
+
 }
 
 .signup-image {
@@ -161,10 +162,17 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-left: 57px;
+  margin-bottom: 65px;
+  padding:0px;
+  
 }
 
 figure {
-  margin-bottom: 50px;
+  margin-bottom: 25px;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: 0%;
   text-align: center;
 }
 
@@ -232,7 +240,7 @@ input:focus {
 
 .signin-form {
   margin-right: 90px;
-  margin-left: 80px;
+  margin-left: 0px;
 }
 
 .signin-image {
@@ -248,13 +256,14 @@ input:focus {
   left: 0px;
   top: 50%;
   transform: translateY(-50%);
-
   color: #222;
 }
 
 .signin-content {
-  padding-top: 67px;
-  padding-bottom: 87px;
+  padding-top: 55px;
+  padding-bottom: 70px;
+  padding-left: auto;
+  padding-right: auto;
 }
 
 @media screen and (max-width: 1200px) {

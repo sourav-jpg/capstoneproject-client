@@ -5,7 +5,7 @@ import { BsPersonCircle } from "react-icons/bs";
 
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useHistory } from "react-router-dom";
-// import signup from "../images/signin.png";
+import signup from "../images/signin.png";
 
 function Registration() {
   const history = useHistory();
@@ -49,7 +49,7 @@ function Registration() {
       <section className="signup">
         <div className="container1 mt-5">
           <div className="signup-content ml-5">
-            <div className="signup-form">
+            <div className="signup-form ">
               <h2 className="form-title"style={{color:"blue"}} >Sign up</h2>
               <form
                 method="POST"
@@ -104,17 +104,11 @@ function Registration() {
                     <option>User</option>
                   </select>
                 </div>
-                <div className="form-group form-button">
+                <div className="form-group form-button ">
                   <input type="submit" onClick={PostData} />
                 
                 </div>
               </form>
-            </div>
-
-            <div className="signup-image">
-              <figure>
-                {/*<img src={signup} alt="registration pic" />*/}
-              </figure>
             </div>
           </div>
         </div>

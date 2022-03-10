@@ -15,7 +15,7 @@ function Report2({
   };
 
   return (
-    <Modal show={open} onClose={handleClose} BackdropComponent={Backdrop}>
+    <Modal show={open} onClose={handleClose} >
       <Modal.Body style={{}}>
         <h4>Enter Haematology Reports </h4>
         <Form>
@@ -75,7 +75,7 @@ function Report2({
       <Modal.Footer>
         <Button
           type="button"
-          class="btn btn-secondary"
+          className="btn btn-secondary"
           data-dismiss="modal"
           onClick={() => onHide()}
         >

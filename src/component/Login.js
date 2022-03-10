@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import { useHistory } from "react-router-dom";
-// import loginpic from "../images/login.jpg";
+import loginpic from "../images/login.jpg";
 
 import { HiOutlineMail } from "react-icons/hi";
 import { RiLockPasswordFill } from "react-icons/ri";
@@ -38,6 +38,8 @@ const [isEmailValid, setisEmailValid] = useState(false);
     });
     const data = await res.json();
 
+    
+    
     if (res.status === 200) {
       console.log("loginnnnn",res,data)
       localStorage.setItem("role", data.role.toLowerCase());
@@ -72,9 +74,6 @@ const [isEmailValid, setisEmailValid] = useState(false);
   };
 
   const validateEmail = (email) => {
-  // const emailCopy = email ;
-  // emailCopy[event.target.name] = event.target.value;
-  // setemail(emailCopy);
 
 console.log("=======================");
 
@@ -109,11 +108,6 @@ console.log("=======================");
 
 
 
-
-
-
-
-
   return (
     <div>
       <section className="sign-in">
@@ -121,7 +115,7 @@ console.log("=======================");
           <div className="signin-content">
             <div className="signin-image">
               <figure>
-                {/*<img src={loginpic} alt="login image" /> */}
+                <img src={loginpic} alt="login image" />
               </figure>
             </div>
 

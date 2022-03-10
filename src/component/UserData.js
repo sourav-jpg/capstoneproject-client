@@ -6,21 +6,21 @@ import Report3 from "./CustomComp/Report3";
 import { useDispatch, useSelector } from "react-redux";
 import { userAction } from "../redux/actions/userAction";
 import Report1 from "./CustomComp/Report1";
-import { RiContactsBookUploadLine } from "react-icons/ri";
-import { Button,FormControl } from "react-bootstrap";
+
+import { Button, FormControl } from "react-bootstrap";
 
 function UserData() {
   const [userData, setuserData] = useState([]);
   const [openModal, setopenModal] = useState(false);
   const [openModal1, setopenModal1] = useState(false);
   const [openModal2, setopenModal2] = useState(false);
-  const [searchval, setsearchval] = useState("")
+  const [Searchval, setSearchval] = useState("")
 
 
-  const [close, setclose] = useState(true);
+  const [close] = useState(true);
   const [selectedUser, setSelectedUser] = useState([]);
-  const date = new Date();
-  const cDate = date.getFullYear();
+  // const date = new Date();
+  // const cDate = date.getFullYear();
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state) => state.isAuth);
@@ -52,51 +52,37 @@ function UserData() {
     callUserPage();
   }, []);
 
-  useEffect(() => {
-    console.log(selectedUser, "selectedUser");
-  }, [selectedUser]);
+
 
   return (
     <div>
-      <div></div>
-
+      <FormControl style={{ width: "40%", position: "relative", left: "60vh", top: "4vh" }} type="search" placeholder="search" onChange={(e) => {
+        setSearchval(e.target.value)
+      }} />
       <form methods="GET">
-        <table style={{ marginTop: "50px" }} class="table">
-<thead>
-<FormControl type="search"
-placeholder="search"
-onChange={(e)=>{
-  setsearchval(e.target.value)
-}}
-/>
-</thead>
-
-
+        <table style={{ marginTop: "50px" }} className="table">
           <thead>
             <tr>
-              <th scope="col" style={{color:"blue"}}>User ID</th>
-              <th scope="col" style={{color:"blue"}}>Email</th>
-              <th style={{color:"blue"}}>Name</th>
-
-              <th scope="col" style={{color:"blue"}}>Haematology</th>
-              <th scope="col" style={{color:"blue"}}>Thyroid </th>
-              <th scope="col" style={{color:"blue"}}>Glucometry</th>
+              <th scope="col">User ID</th>
+              <th scope="col">Email</th>
+              <th>Name</th>
+              <th scope="col">Haematology</th>
+              <th scope="col">Thyroid </th>
+              <th scope="col">Glucometry</th>
             </tr>
           </thead>
-
           {isLogin && (
             <>
-              {userData.filter((item)=>
-item.name.includes(searchval.toLowerCase())
-              ).map((val) => {
-                return (
-                  <tr key={val._id}>
-                    <td>{val._id}</td>
-                    <td> {val.email} </td>
-                    <td> {val.name}</td>
+                  <tbody>
 
-                    <td>
-                      {" "}
+              {userData.filter((item,ind) => item.email.includes(Searchval.toLocaleLowerCase())).map((val, ind) => {
+                return (
+
+                    <tr key={val._id}>
+                    <td>{val._id}</td>
+                    <td>{val.email}</td>
+                    <td>{val.name}</td>
+                    <td> 
                       <Button
                         onClick={(e) => {
                           e.preventDefault();
@@ -104,52 +90,46 @@ item.name.includes(searchval.toLowerCase())
                           setSelectedUser(val);
                         }}
                         style={{ color: "black" }}
-                        variant= { val?.heamatology ? "primary" : "danger"}
-
-                        disabled={!val?.heamatology}
-                      >
+                        variant={val?.heamatology ? "primary" : "danger"}
+                        disabled={!val?.heamatology}>
                         {val?.heamatology ? "view Details" : "N/A"}
-                      </Button>{" "}
+                      </Button>
                     </td>
                     <td>
                       <Button
                         onClick={(e) => {
                           e.preventDefault();
-
                           setopenModal1(true);
                           console.log(val);
                           console.log(val, "---------> ssss");
                           setSelectedUser(val);
                         }}
                         style={{ color: "black" }}
-                        variant= { val?.thyroid ? "primary" : "danger"}
-                        disabled={!val?.thyroid}
-                      >
-                        {" "}
+                        variant={val?.thyroid ? "primary" : "danger"}
+                        disabled={!val?.thyroid}>
                         {val?.thyroid ? "view Details" : "N/A"}
-                      </Button>{" "}
+                      </Button>
                     </td>
                     <td>
                       <Button
                         onClick={(e) => {
                           e.preventDefault();
-
                           setopenModal2(true);
                           console.log(val);
                           console.log(val, "--------->");
                           setSelectedUser(val);
                         }}
                         style={{ color: "black" }}
-                        variant= { val?.glucometry ? "primary" : "danger"}
-
-                        disabled={!val?.glucometry}
-                      >
+                        variant={val?.glucometry ? "primary" : "danger"}
+                        disabled={!val?.glucometry}>
                         {val?.glucometry ? "view Details" : "N/A"}
                       </Button>
                     </td>
-                  </tr>
-                );
-              })}{" "}
+                  </tr> 
+                  
+                  );
+                })}
+                </tbody>
             </>
           )}
         </table>
@@ -161,8 +141,7 @@ item.name.includes(searchval.toLowerCase())
         setopenModal={setopenModal}
         handleClose={() => {
           setopenModal(false);
-        }}
-      />
+        }} />
       <Report2
         Backdrop={close}
         userData={selectedUser}
@@ -170,17 +149,15 @@ item.name.includes(searchval.toLowerCase())
         setopenModal={setopenModal1}
         handleClose={() => {
           setopenModal1(false);
-        }}
-      />
-           <Report3
+        }} />
+      <Report3
         Backdrop={close}
         userData={selectedUser}
         open={openModal2}
         setopenModal={setopenModal2}
         handleClose={() => {
           setopenModal2(false);
-        }}
-      />
+        }} />
     </div>
   );
 }
