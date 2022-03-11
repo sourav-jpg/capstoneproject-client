@@ -1,7 +1,6 @@
 /* eslint-disable testing-library/prefer-screen-queries */
 
 import { fireEvent, queryAllByTestId, render} from "@testing-library/react"
-// import { fireEvent } from "@testing-library/react"
 import Login from "./Login"
 
 

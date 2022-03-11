@@ -4,7 +4,6 @@ import { Route, Router, NavLink, Switch } from "react-router-dom";
 const adminNav = [
   { name: "Home", path: "/home" },
   { name: "samples", path: "/details" },
-  // { name: "Create_sample", path: "/sample" },
   { name: "registration", path: "/register" },
   { name: "edit", path: "/RegData" },
   { name: "logout", path: "/logout" },

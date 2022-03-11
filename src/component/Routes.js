@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { userAction } from "../redux/actions/userAction";
-import EnterSample from "./EnterSample";
+// import EnterSample from "./EnterSample";
 import Errorpage from "./ErrorPage";
 import Home from "./Home";
 import Login from "./Login";
 import Logout from "./Logout";
 import Navbar from "./Navbar";
 import RegData from "./RegData";
-// import RegEdit from "./RegEdit";
 import Registration from "./Registration";
 import UserData from "./UserData";
 
@@ -55,9 +54,7 @@ function Routes() {
             <Route exact path="/logout">
               <Logout />
             </Route>
-            <Route path="/sample">
-              <EnterSample />
-            </Route>
+ 
             <Route>
               <Errorpage />
             </Route>

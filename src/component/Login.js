@@ -42,7 +42,9 @@ const [isEmailValid, setisEmailValid] = useState(false);
     
     if (res.status === 200) {
       console.log("loginnnnn",res,data)
+      console.log(data.token,"tt")
       localStorage.setItem("role", data.role.toLowerCase());
+      localStorage.setItem("token",data.token)
       alert("Login successful");
       dispatch(userAction(true))
       history.push("/details", { replace: true });

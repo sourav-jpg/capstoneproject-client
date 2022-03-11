@@ -32,7 +32,7 @@ function RegData() {
   return (
     <div>
       {console.log(userData)}
-      <Table className="table table-bordered" Responsive>
+      <Table className="table table-bordered" responsive>
         <thead>
           <tr>
             <th>ID</th>

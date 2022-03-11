@@ -19,8 +19,7 @@ function UserData() {
 
   const [close] = useState(true);
   const [selectedUser, setSelectedUser] = useState([]);
-  // const date = new Date();
-  // const cDate = date.getFullYear();
+  
   const dispatch = useDispatch();
 
   const isLogin = useSelector((state) => state.isAuth);
@@ -28,13 +27,13 @@ function UserData() {
   const callUserPage = async () => {
     try {
       const res = await fetch("/details", {
-        method: "GET",
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
-        },
-        credentials: "include",
+        }, body: JSON.stringify({
+          token:token
+        })
       });
-
       const data = await res.json();
       console.log(data);
       setuserData([...data]);
@@ -46,8 +45,10 @@ function UserData() {
       console.log(err);
     }
   };
+  let token;
 
   useEffect(() => {
+    token= localStorage.getItem("token")
     dispatch(userAction(true));
     callUserPage();
   }, []);
@@ -59,7 +60,7 @@ function UserData() {
       <FormControl style={{ width: "40%", position: "relative", left: "60vh", top: "4vh" }} type="search" placeholder="search" onChange={(e) => {
         setSearchval(e.target.value)
       }} />
-      <form methods="GET">
+      <form methods="POST">
         <table style={{ marginTop: "50px" }} className="table">
           <thead>
             <tr>

@@ -17,9 +17,7 @@ function RegEdit(props) {
         setShow(props.showEditData)
     }, [props.showEditData])
 
-//    useEffect(()=>{
-//        props.userData()
-//    },[])
+
 
 
     useEffect(() => {

@@ -10,24 +10,7 @@ function Logout() {
   useEffect(() => {
     dispatch(userAction(false));
     localStorage.clear();
-    fetch("/logout", {
-      methods: "GET",
-      headers: {
-        ACCEPT: "application/json",
-        "content-type": "application/json",
-      },
-      credentials: "include",
-    })
-      .then((res) => {
-        history.push("/login", { replace: true });
-        if (!res.status === 200) {
-          const error = new Error(res.error);
-          throw error;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
   });
 
   return (
